@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "@babia/uuid-v7": "jsr:@babia/uuid-v7@^0.2.0",
+    "@std/cli": "jsr:@std/cli@^1.0.4"
+  }
+}

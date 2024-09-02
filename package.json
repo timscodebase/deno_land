@@ -1,0 +1,14 @@
+{
+  "name": "deno-rxdb-todo",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "start": "deno run --allow-read --allow-write ./src/todo.ts",
+    "dev": "deno run --allow-read --allow-write --watch ./src/todo.ts",
+    "build": "deno run --allow-read --allow-write ./src/todo.ts"
+  },
+  "dependencies": {
+    "rxdb": "^15.32.0",
+    "rxjs": "^7.8.1"
+  }
+}
