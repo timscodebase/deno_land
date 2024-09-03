@@ -20,3 +20,4 @@ export const todoSchema = {
   },
   required: ['id', 'name', 'done', 'timestamp']
 }
+

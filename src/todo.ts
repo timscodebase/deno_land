@@ -1,8 +1,6 @@
 import { parseArgs } from "jsr:@std/cli/parse-args";
-import { generate, validate } from "@babia/uuid-v7";
 
-import { todosDB, todoSchema } from "./db/index.ts";
-import { getLocalStorageItem, setLocalStorageItem } from "./utils/index";
+import { createTodo, todosDB, todoSchema } from "./db/index.ts";
 
 const flags = parseArgs(Deno.args, {
   boolean: ["c", "e", "h", "l", "create", "edit", "help", "list"],
@@ -16,29 +14,6 @@ const isEdit = flags.edit || flags.e;
 const isHelp = flags.help || flags.h;
 const isList = flags.list || flags.l;
 const showVersion = flags.version || flags.v;
-
-const createTodo = async () => {
-  const id = generate();
-  const task = flags._[0];
-  const timestamp = new Date().toISOString();
-  const todo = {
-    id,
-    name: task,
-    done: false,
-    timestamp
-  }
-  const stringifiedTodo = JSON.stringify(todo);
-
-  console.log("Todo: ", {id, task});
-  setLocalStorageItem("todos", stringifiedTodo);
-
-//   await todosDB.todos.insert({
-//     id,
-//     name: task,
-//     done: false,
-//     timestamp
-//   });
-}
 
 const setupCLI = () => {
   const otherArgs = flags._;
@@ -69,7 +44,7 @@ const setupCLI = () => {
   if (isCreate) {
     console.log("create");
 
-    createTodo();
+    createTodo(Deno.args[0]);
 
     Deno.exit(1);
   }

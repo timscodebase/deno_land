@@ -10,5 +10,8 @@
   "dependencies": {
     "rxdb": "^15.32.0",
     "rxjs": "^7.8.1"
+  },
+  "devDependencies": {
+    "fake-indexeddb": "^6.0.0"
   }
 }
